@@ -1,0 +1,15 @@
+// Oi, eu sou o Goku!
+begin
+content
+{
+	newspaper {
+		title: "bat\"ata"
+		date: "frita"
+	}
+	noticia1
+	Noticia2
+}
+structure
+{
+}
+end
