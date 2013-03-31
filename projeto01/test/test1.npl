@@ -1,0 +1,51 @@
+
+begin
+content {
+	newspaper{ 
+		title: "SEMPRE ONLINE. O jornal em tempo real"
+		date: "27 de Outubro de 2009"
+	}
+	headline1{
+		title: "Virada Cultural"
+		image: "./virada.jpg"
+		abstract: "A Virada"
+        
+		author: "Fulano de Tal"
+		source: "Central de"
+	}
+	headline2{
+		title: "PSDB diz que"
+		abstract: " O presidente "
+		text:" O presidente nacional "
+		source: "FolhaOnLine.com"
+	}
+	Noticia3{
+		title: "Xuxa troca Som Livre por Sony"
+		image: "./xuxa.jpg"
+		abstract: "A gravadora." 
+		source: "http:"
+	}
+}
+structure {
+	format{
+		col: 3 
+		border: 0 
+	}
+	item[1:2]{
+		headline1.title
+		headline1.image 
+		headline1.abstract 
+	}
+	item[1]{
+		headline2.title
+		headline2.abstract
+		headline2.source
+	}
+	item[2]{
+		Noticia3.title
+		Noticia3.source
+		Noticia3.image
+		Noticia3.abstract
+	}
+}
+end
