@@ -15,6 +15,8 @@ AUTHOR: 'author';
 STRUCTURE: 'structure';
 FORMAT: 'format';
 ITEM: 'item';
+COL: 'col';
+BORDER: 'border';
 
 // Tokens extras
 LCURL: '{';
@@ -22,36 +24,83 @@ RCURL: '}';
 LBRAC: '[';
 RBRAC: ']';
 COLON: ':';
-NOTICIA: [A-Za-z] [A-Za-z0-9_]*;
+DOT  : '.';
+NEWS: [A-Za-z] [A-Za-z0-9_]*;
 STRING: '"' ( ~('"') | '\\"' )* '"';
+NUM: [0-9]+;
 
 // Tokens de coisas ignoradas
-COMMENT: '//' .*? '\n' -> skip;
+COMMENT: '//' ~('\n')* '\n' -> skip;
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 //EVERYTHING_ELSE: .+? -> skip;
 
 
-// Regras
+//##--- Regras ---##//
 root
     : BEGIN cont struct END
     ;
 
+
+//## Content ##//
 cont
-    : CONTENT LCURL newsp NOTICIA* RCURL
+    : CONTENT LCURL newsp_ news_* RCURL
     ;
 
-struct
-    : STRUCTURE LCURL RCURL
-    ;
-
-newsp
+// Newspaper
+newsp_
     : NEWSPAPER LCURL title_ date_? RCURL
     ;
 
 title_
-    : TITLE COLON STRING
+    : TITLE COLON STRING 
     ;
 
 date_
     : DATE COLON STRING
     ;
+
+// News
+news_
+    : NEWS LCURL title_ news_obj+ RCURL
+    ;
+
+news_obj_token: TITLE | ABSTRACT | IMAGE | SOURCE | DATE | AUTHOR | TEXT;
+news_obj
+    : news_obj_token COLON STRING
+    ;
+
+//## Structure ##/
+struct
+    : {System.out.println("<html><head></head><body>");}
+      STRUCTURE LCURL format_ item_+ RCURL
+      {System.out.println("</body></html>");}
+    ;
+
+// format
+format_
+    : FORMAT LCURL col_ border_? RCURL
+    ;
+
+col_
+    : COL COLON NUM
+    ;
+
+border_
+    : BORDER COLON NUM
+    ;
+
+
+// Item
+item_
+    : ITEM LBRAC NUM RBRAC LCURL print+ RCURL
+    | ITEM LBRAC range RBRAC LCURL print+ RCURL
+    ;
+
+range
+    : NUM COLON NUM
+    ;
+
+print
+    : NEWS DOT news_obj_token
+    ;
+
