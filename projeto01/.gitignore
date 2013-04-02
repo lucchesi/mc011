@@ -2,3 +2,8 @@
 *.swo
 *.out
 bin/*
+.DS_Store
+.classpath
+.project
+.settings
+.settings/*

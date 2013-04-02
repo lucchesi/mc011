@@ -1,20 +1,6 @@
 grammar NPL;
 
 // Variaveis "globais"
-@header {
-    import java.util.List;
-    import java.util.ArrayList;
-    import java.util.Map;
-    import java.util.HashMap;
-}
-@members {
-    int i=0;
-    List<String> a = new ArrayList<String>();
-    class Noticia {
-        public String bla;
-    }
-    List<Noticia> news = new ArrayList<Noticia>();
-}
 
 // Tokens das palavras reservadas
 BEGIN: 'begin';
@@ -56,7 +42,6 @@ root
       BEGIN cont struct END
     ;
 
-
 //## Content ##//
 cont
     : CONTENT LCURL newsp_ news_* RCURL
@@ -69,10 +54,6 @@ newsp_
 
 title_
     : TITLE COLON STRING 
-      {
-          i++; System.out.println("i: " + i + " " + $STRING.text);
-          a.add($STRING.text);
-      }
     ;
 
 date_
@@ -82,11 +63,6 @@ date_
 // News
 news_
     : NEWS LCURL title_ news_obj+ RCURL
-    {
-        Noticia tmp = new Noticia();
-        tmp.bla = $NEWS.text;
-        news.add(tmp);
-    }
     ;
 
 news_obj_token: TITLE | ABSTRACT | IMAGE | SOURCE | DATE | AUTHOR | TEXT;
@@ -96,20 +72,8 @@ news_obj
 
 //## Structure ##/
 struct
-    : {
-        System.out.println("<html><head></head><body>");
-        for(Iterator<String> it = a.iterator(); it.hasNext(); ) {
-            String item = it.next();
-            System.out.println(item);
-        }
-        System.out.println("Noticias:");
-        for(Iterator<Noticia> it = news.iterator(); it.hasNext(); ) {
-            String item = it.next().bla;
-            System.out.println(item);
-        }
-      }
+    :
       STRUCTURE LCURL format_ item_+ RCURL
-      {System.out.println("</body></html>");}
     ;
 
 // format
