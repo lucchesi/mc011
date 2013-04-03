@@ -20,235 +20,150 @@ import br.unicamp.mc011.projeto01.NPLParser.RootContext;
 import br.unicamp.mc011.projeto01.NPLParser.StructContext;
 import br.unicamp.mc011.projeto01.NPLParser.Title_Context;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
-public class MainListener implements NPLListener {
-	int i=0;
+public class MainListener implements NPLListener {		
+	Newspaper newspaper = new Newspaper();
+	List<NewsArticle> articles = new ArrayList<NewsArticle>();
 	
-	List<String> a = new ArrayList<String>();
-	
-	class Noticia {
-	    public String bla;
+	public String unescape(String input){
+		return input.substring(1, input.length() - 1).replace("\\\"", "\"");
 	}
 	
-	List<Noticia> news = new ArrayList<Noticia>();
+	@Override
+	public void enterEveryRule(ParserRuleContext arg0) { }
 
 	@Override
-	public void enterEveryRule(ParserRuleContext arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitEveryRule(ParserRuleContext arg0) { }
 
 	@Override
-	public void exitEveryRule(ParserRuleContext arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visitErrorNode(ErrorNode arg0) { }
 
 	@Override
-	public void visitErrorNode(ErrorNode arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visitTerminal(TerminalNode arg0) { }
 
 	@Override
-	public void visitTerminal(TerminalNode arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterRange(RangeContext ctx) { }
 
 	@Override
-	public void enterRange(RangeContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitRange(RangeContext ctx) { }
 
 	@Override
-	public void exitRange(RangeContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterTitle_(Title_Context ctx) { }
 
 	@Override
-	public void enterTitle_(Title_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitTitle_(Title_Context ctx) {	}
 
 	@Override
-	public void exitTitle_(Title_Context ctx) {
-        i++; 
-        System.out.println("i: " + i + " " + ctx.getText());
-        a.add(ctx.getText());
-	}
+	public void enterRoot(RootContext ctx) { }
 
 	@Override
-	public void enterRoot(RootContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitRoot(RootContext ctx) {	}
 
 	@Override
-	public void exitRoot(RootContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterCol_(Col_Context ctx) { }
 
 	@Override
-	public void enterCol_(Col_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitCol_(Col_Context ctx) { }
 
 	@Override
-	public void exitCol_(Col_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterBorder_(Border_Context ctx) { }
 
 	@Override
-	public void enterBorder_(Border_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitBorder_(Border_Context ctx) { }
 
 	@Override
-	public void exitBorder_(Border_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterPrint(PrintContext ctx) { }
 
 	@Override
-	public void enterPrint(PrintContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitPrint(PrintContext ctx) { }
 
 	@Override
-	public void exitPrint(PrintContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enterNews_(News_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterNews_(News_Context ctx) { }
 
 	@Override
 	public void exitNews_(News_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enterDate_(Date_Context ctx) {
-        Noticia tmp = new Noticia();
-        tmp.bla = ctx.getText();
-        news.add(tmp);
-	}
-
-	@Override
-	public void exitDate_(Date_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enterNews_obj(News_objContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exitNews_obj(News_objContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enterStruct(StructContext ctx) {
-        System.out.println("<html><head></head><body>");
+        NewsArticle n = new NewsArticle();
+        n.fields.put("objname", ctx.NEWS().getText());
         
-        for(Iterator<String> it = a.iterator(); it.hasNext(); ) {
-            String item = it.next();
-            System.out.println(item);
-        }
+        List<News_objContext> objs = ctx.news_obj();
+        //TODO: Tratar itens duplicados (exibir warning?)
+        for(News_objContext o : objs)
+        	n.fields.put(o.news_obj_token().getText().toLowerCase(), unescape(o.STRING().getText()));
         
-        System.out.println("Noticias:");
-        for(Iterator<Noticia> it = news.iterator(); it.hasNext(); ) {
-            String item = it.next().bla;
-            System.out.println(item);
-        }
-
+        articles.add(n);
+        newspaper.articles.put(n.fields.get("objname"), n);
 	}
 
 	@Override
-	public void exitStruct(StructContext ctx) {
-		System.out.println("</body></html>");
+	public void enterDate_(Date_Context ctx) { }
+
+	@Override
+	public void exitDate_(Date_Context ctx) { }
+
+	@Override
+	public void enterNews_obj(News_objContext ctx) { }
+
+	@Override
+	public void exitNews_obj(News_objContext ctx) { }
+
+	@Override
+	public void enterStruct(StructContext ctx) { }
+
+	@Override
+	public void exitStruct(StructContext ctx) {	}
+
+	@Override
+	public void enterNews_obj_token(News_obj_tokenContext ctx) { }
+
+	@Override
+	public void exitNews_obj_token(News_obj_tokenContext ctx) { }
+
+	@Override
+	public void enterFormat_(Format_Context ctx) { }
+
+	@Override
+	public void exitFormat_(Format_Context ctx) { }
+
+	@Override
+	public void enterCont(ContContext ctx) { }
+
+	@Override
+	public void exitCont(ContContext ctx) { 
+		Newsp_Context c = ctx.newsp_();
+		
+		//TODO: tratar repeticao
+		newspaper.title = c.title_().getText();
+		//TODO: se for null?
+		newspaper.date = c.date_().getText();
 	}
 
 	@Override
-	public void enterNews_obj_token(News_obj_tokenContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterNewsp_(Newsp_Context ctx) { }
 
 	@Override
-	public void exitNews_obj_token(News_obj_tokenContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void exitNewsp_(Newsp_Context ctx) { }
 
 	@Override
-	public void enterFormat_(Format_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
+	public void enterItem_(Item_Context ctx) { }
 
 	@Override
-	public void exitFormat_(Format_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enterCont(ContContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exitCont(ContContext ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enterNewsp_(Newsp_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exitNewsp_(Newsp_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enterItem_(Item_Context ctx) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exitItem_(Item_Context ctx) {
-		// TODO Auto-generated method stub
-
+	public void exitItem_(Item_Context ctx) { 
+		NewspaperItem n = new NewspaperItem();
+		
+		if(ctx.range() != null){
+			n.firstCol = Integer.parseInt(ctx.range().NUM(0).getText());
+			n.lastCol = Integer.parseInt(ctx.range().NUM(1).getText());
+		} else {
+			n.firstCol = Integer.parseInt(ctx.NUM().getText());
+			n.lastCol = Integer.parseInt(ctx.NUM().getText());
+		}
+		
+		for(PrintContext o : ctx.print())
+			n.printItems.add(new NewspaperItemPrint(o.NEWS().getText(), o.news_obj_token().getText()));
+		
+		newspaper.items.add(n);
 	}
 
 }

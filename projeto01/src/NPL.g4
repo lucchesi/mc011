@@ -28,8 +28,9 @@ RBRAC: ']';
 COLON: ':';
 DOT  : '.';
 NEWS: [A-Za-z] [A-Za-z0-9_]*;
-STRING: '"' ( ~('"') | '\\"' )* '"';
-NUM: [0-9]+;
+NUM: '0' | [1-9] [0-9]*;
+STRING: '"' (ESC | ~["\\])* '"';
+fragment ESC: '\\"';
 
 // Tokens de coisas ignoradas
 COMMENT: '//' ~('\n')* '\n' -> skip;
@@ -62,7 +63,7 @@ date_
 
 // News
 news_
-    : NEWS LCURL title_ news_obj+ RCURL
+    : NEWS LCURL news_obj+ RCURL
     ;
 
 news_obj_token: TITLE | ABSTRACT | IMAGE | SOURCE | DATE | AUTHOR | TEXT;
@@ -72,8 +73,7 @@ news_obj
 
 //## Structure ##/
 struct
-    :
-      STRUCTURE LCURL format_ item_+ RCURL
+    : STRUCTURE LCURL format_ item_+ RCURL
     ;
 
 // format

@@ -16,9 +16,21 @@ public class Main {
         NPLLexer lexer = new NPLLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);        
         NPLParser parser = new NPLParser(tokens);
+        MainListener parserListener = new MainListener();
+        
         ParseTree tree = parser.root();
-        ParseTreeWalker.DEFAULT.walk(new MainListener(), tree);
-       // System.out.println(tree.toStringTree(parser));
+        ParseTreeWalker.DEFAULT.walk(parserListener, tree);
+        
+        Newspaper n = parserListener.newspaper;
+        for(NewspaperItem i : n.items){
+        	try {
+				System.out.println(i.getItemHTML(n));
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				System.exit(1);
+			}
+        }
+        
 	}
 
 }

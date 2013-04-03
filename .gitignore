@@ -7,3 +7,5 @@ bin/*
 .project
 .settings
 .settings/*
+.metadata
+.metadata/*
