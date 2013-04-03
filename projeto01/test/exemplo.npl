@@ -112,7 +112,7 @@ O presidente nacional do PSDB, senador Sérgio Guerra (PSDB-PE), afirmou neste d
 structure {
 	format{
 		col: 3 //  número de colunas do jornal
-		border: 10 //Largura da borda entre colunas
+		border: 20 //Largura da borda entre colunas
 	}
 		
 	//define um item que ocupará espaço da coluna 1 até a coluna 2 (2 colunas).
@@ -129,10 +129,11 @@ structure {
 		headline2.title
 		headline2.abstract
 		headline2.source
+		headline2.readmore
 	}
 
 	//define um item que ocupará espaço apenas da coluna 2.
-	item[3]{
+	item[2:3]{
 		Noticia3.title
 		Noticia3.source
 		Noticia3.image

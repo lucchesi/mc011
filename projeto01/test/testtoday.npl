@@ -1,0 +1,95 @@
+begin
+
+content {
+	newspaper{ 
+		title: "Unicamp NEWS"
+		date: "03 de Abril de 2013"
+	}
+	
+	n1{
+		title: "Ônibus que caiu de viaduto estava com vistoria vencida"
+		abstract: "O ônibus da Viação Paranapuan que despencou na Avenida Brasil de um viaduto na região de Bonsucesso, na zona norte do Rio de Janeiro, na tarde de terça-feira (2) estava com a vistoria anual obrigatória do Detran-RJ vencida. De acordo com o site do ..."
+		image: "./n1.jpg"
+		source: "odiario.com"
+		date: "03 de Abril de 2013"
+		author: "Marcelo Gomes"
+		text: "O ônibus da Viação Paranapuan que despencou na Avenida Brasil de um viaduto na região de Bonsucesso, na zona norte do Rio de Janeiro, na tarde de terça-feira (2) estava com a vistoria anual obrigatória do Detran-RJ vencida. De acordo com o site do Detran-RJ, o último licenciamento do coletivo, placa KYI 0973, foi feito em 2011. 
+
+Fabricado em 2007, o ônibus acumula 47 multas desde 2008, que somam R$ 4,4 mil, segundo a página da Secretaria Municipal de Transportes (SMTR) na internet. A última infração foi registrada em 19 de março, às 14h03, por transitar na Avenida Presidente Vargas, no Centro do Rio, acima da velocidade permitida. Há outras 13 multas por excesso de velocidade, e 12 por avanço de sinal. Já a vistoria feita pela SMTR estava em dia: a última ocorreu em 3 de julho do ano passado, e tem validade de um ano.
+
+O acidente deixou sete mortos e 11 feridos, dois em estado gravíssimo. Os mortos foram identificados pelos bombeiros como Luiz Antônio do Amaral, de 41 anos; Marcius Flávio do Nascimento, de 36; Oséas da Silva Cardoso, de 39; Ângela Maria Reis da Silva, de 62; Francisco Batista de Souza, de 40; José Aparecido de Jesus, de 41; e Luciana Chagas da Silva, de 26. 
+
+Até às 9h desta quarta-feira (3), apenas o corpo de Marcius já havia sido retirado por parentes no Instituto Médico-Legal (IML) para sepultamento. Ele será enterrado às 16h, no Cemitério de São Gonçalo, na Região Metropolitana do Rio.
+
+O motorista do ônibus, André Luiz Souza Oliveira, de 33 anos, está internado no Hospital Estadual Getúlio Vargas, na Penha. Ele teve fratura na perna, traumatismo craniano e está em estado de choque. O quadro dele é estável. O delegado José Pedro Costa da Silva, da 21ª Delegacia de Polícia (Bonsucesso) chegou a conversar com ele informalmente na noite de terça-feira. O delegado quer ouvi-lo de novo o motorista não estava em condições de prestar depoimento."
+	}
+	
+	n2{
+		title: "Inundação histórica deixa 50% de cidade argentina debaixo d'água"
+		abstract: "Ao menos seis pessoas morreram em decorrência do forte temporal que atingiu a cidade de Buenos Aires, capital da Argentina, durante a última madrugada. Segundo o Serviço de Emergência Metropolitano, a cidade está em estado de alerta. De acordo ..."
+		image: "./n2.jpg"
+		source: "Terra Brasil"
+		date: "03 de Abril de 2013"
+		text: "Uma pessoa morreu e outras 2.200 tiveram de ser evacuadas em La Plata, sul de Buenos Aires, em uma inundação histórica que chegou a cobrir na quarta-feira 50% da cidade, capital do principal distrito do país, informaram as autoridades.
+
+\"Temos um morto confirmado pela polícia, mas esta catástrofe permite supor que há circunstâncias muito graves e pode haver outras. Mais de 50% da cidade ficou sob as águas, que começam a baixar, e temos 2.200 evacuados\", informou o chefe de gabinete da prefeitura de La Plata, Santiago Martorelli, falando ao canal C5N.
+
+Martorelli admitiu que há vítimas fatais, mas que, por ora, não pode confirmar nenhuma informação.
+
+O temporal que também atingiu a capital deixou 8 mortos e atingiu 350.000 pessoas, e depois se deslocou para o sul, atingindo em cheio a cidade de La Plata, onde caíram 400 milímetros de água em duas horas.
+
+\"Isso jamais aconteceu em La Plata. Estávamos esperando o amanhecer para fazer os primeiros resgates. Meia cidade está sem luz. Há pessoas sobre telhados, árvores, à espera de que as socorremos\", afirmou o secretário argentino de Segurança, Sergio Berni.
+
+Bombeiros, Defesa Civil, Exército, Prefeitura e da Policía metropolitana, estão trabalhando na zona.
+
+A chuva de terça-feira foi um recorde histórico para abril em Buenos Aires, com mais de 155 milímetros acumulados em menos de sete horas, segundo um comunicado do Observatório Central de Buenos Aires (OCBA).
+
+A inundação de ruas e casas atingiu com maior força os bairros da zona norte da capital, onde tem crescido nos últimos 10 anos a construção de edifícios, sem ser compensada com obras de infraestrutura hídrica para o deságue, segundo entidades ambientalistas.
+
+As inundações acontecem na capital argentina pela existência de antigos cursos d'água, agora debaixo da terra, que obstruem um deságue normal para o Rio da Prata."
+	}
+	
+	n3{
+		title: "Paulo Macedo nega que tenha pedido para sair do Governo"
+		abstract: "O ministro da Saúde, Paulo Macedo, negou hoje ter pedido para deixar o Governo, afirmando que não está cansado. ..."
+		image: "./n3.jpg"
+		source: "TSF Online"
+		date: "03 de Abril de 2013"
+		text: "O ministro da Saúde, Paulo Macedo, negou hoje ter pedido para deixar o Governo, afirmando que não está cansado.
+		O ministro da Saúde considera «inadmissível» alegar cansaço para deixar o Governo perante as dificuldades.
+No Parlamento, Paulo Macedo foi confrontado com a notícia do jornal Público, segundo a qual os ministros da Justiça, Paula Teixeira da Cruz, e o ministro da Saúde solicitaram a saída do Governo, alegando algum cansaço.
+Na resposta, o ministro respondeu: «A notícia é totalmente falsa, não tem qualquer ponto de verdade; portanto, desminto-a categoricamente.»
+«Cansaço, só se for de subir todos os dias os seis pisos do Ministério da Saúde, mas faço-o voluntariamente», disse.
+Ainda na comissão parlamentar, e numa pergunta levantada pelo PCP, o ministro assegurou que a reforma do Estado não vai mexer com as taxas moderadoras."
+	}
+}
+
+structure {
+	format{
+		col: 3
+		border: 20
+	}
+	
+	item[1:2]{
+		n1.title
+		n1.image
+		n1.abstract
+		n1.readmore
+	}
+	
+	item[3]{
+		n3.title
+		n3.image
+		n3.abstract
+		n3.readmore
+	}
+	
+	item[1:3]{
+		n2.title
+		n2.image
+		n2.abstract
+		n2.readmore
+	}
+}
+
+end

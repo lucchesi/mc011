@@ -9,11 +9,12 @@ grammar Wiki;
     int hashs=0;
 }
 
-WS : [ \t\r]+ -> skip ; // skip spaces, tabs
-BR   : '\n';
+WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs
+BR   : [\n]+;
 STRING: ( ~('"'|'\n') | '\\"' )+;
 
 //##--- Regras ---##//
+	
 wiki:
     { 
         textofinal = "";
@@ -21,9 +22,13 @@ wiki:
         hashs=0;
     }
      '"' br? (linha br*)+ '"'
-    { System.out.println(textofinal); }
     ;
 
+w returns [ String s ]
+	: wiki
+	{ $s = textofinal; }
+	;
+	
 br
     : BR
     { textofinal += "\n"; }
@@ -48,7 +53,7 @@ linha
         String tmp2 = tmp.replaceAll("[^:]*", "");
         for(int i=0; i<tmp2.length(); i++)
             tmp = tmp.replaceAll("^(\\s*:+):", "\$1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-        tmp = tmp.replaceAll("^(\\s*):", "\$1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        tmp = tmp.replaceAll("^(\\s*):", "<br>\$1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
         
         // Links
         tmp = tmp.replaceAll("\\[([^\\]]*)\\|([^\\]]*)\\]", "<a href=\"\$1\">\$2</a>");

@@ -125,9 +125,8 @@ public class NewsArticle {
     		return "";
     	
     	StringBuilder b = new StringBuilder();
-    	//TODO: Tratar formatacao wiki
     	b.append("<div class=\"text\">");
-    	b.append(fields.get("text"));
+    	b.append(MainWiki.parseWiki(fields.get("text")));
     	b.append("</div>");
     	
     	return b.toString();
