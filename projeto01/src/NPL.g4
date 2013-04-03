@@ -19,6 +19,7 @@ FORMAT: 'format';
 ITEM: 'item';
 COL: 'col';
 BORDER: 'border';
+READMORE: 'readmore';
 
 // Tokens extras
 LCURL: '{';
@@ -66,7 +67,7 @@ news_
     : NEWS LCURL news_obj+ RCURL
     ;
 
-news_obj_token: TITLE | ABSTRACT | IMAGE | SOURCE | DATE | AUTHOR | TEXT;
+news_obj_token: TITLE | ABSTRACT | IMAGE | SOURCE | DATE | AUTHOR | TEXT | READMORE;
 news_obj
     : news_obj_token COLON STRING
     ;

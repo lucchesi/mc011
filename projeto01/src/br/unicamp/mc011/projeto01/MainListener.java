@@ -88,9 +88,15 @@ public class MainListener implements NPLListener {
         n.fields.put("objname", ctx.NEWS().getText());
         
         List<News_objContext> objs = ctx.news_obj();
-        //TODO: Tratar itens duplicados (exibir warning?)
-        for(News_objContext o : objs)
+
+        for(News_objContext o : objs){
+        	if(n.fields.containsKey(o.news_obj_token().getText().toLowerCase()))
+        		System.out.println("Warning: Duplicate field detected: " + o.news_obj_token().getText().toLowerCase());
+        	
         	n.fields.put(o.news_obj_token().getText().toLowerCase(), unescape(o.STRING().getText()));
+        }
+        
+        n.fields.put("readmore", "");
         
         articles.add(n);
         newspaper.articles.put(n.fields.get("objname"), n);
@@ -138,10 +144,10 @@ public class MainListener implements NPLListener {
 	public void exitCont(ContContext ctx) { 
 		Newsp_Context c = ctx.newsp_();
 		
-		//TODO: tratar repeticao
 		newspaper.title = unescape(c.title_().STRING().getText());
-		//TODO: se for null?
-		newspaper.date = unescape(c.date_().STRING().getText());
+		
+		if(c.date_() != null)
+			newspaper.date = unescape(c.date_().STRING().getText());
 	}
 
 	@Override

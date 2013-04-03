@@ -121,6 +121,7 @@ structure {
 		headline1.image //Mostra o campo image do objeto headline1 neste item
 		//Mostra o campo abstract do objeto headline1 neste item
 		headline1.abstract
+		headline1.readmore
 	}
 	
 	//define um item que ocupará espaço apenas da coluna 1.

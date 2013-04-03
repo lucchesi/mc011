@@ -38,10 +38,29 @@ public class Main {
 		int cwidth = numCols * dwidth + ((numCols - 1) * border);
 		return cwidth ;
 	}
+	
+	public static String buildInnerPage(Newspaper n, NewsArticle a){
+		StringBuilder output = new StringBuilder();
+		output.append("<div id=\"" + a.fields.get("objname") + "\" class=\"container\"><div class=\"span12\">");
+		output.append("<p class=\"text-left\"><a href=\"#newspaper\" class=\"readmore\">&lt;&lt; Voltar</a></p>");
+		output.append(a.getTitleHTML());
+		output.append(a.getDateHTML());
+		output.append(a.getAuthorHTML());
+		output.append(a.getSourceHTML());
+		output.append(a.getImageCenterHTML());
+		String text = a.getTextHTML();
+		if(text.length() > 0)
+			output.append(text);
+		else
+			output.append(a.getAbstractHTML());
 		
+		output.append("</div></div>");
+		return output.toString();
+	}
+	
 	public static String buildIndex(Newspaper n) throws Exception{
-		String headerTemplate = readFile("../templates/index_header.html");	
-		String footerTemplate = readFile("../templates/index_footer.html");	
+		String headerTemplate = readFile("src/templates/index_header.html");	
+		String footerTemplate = readFile("src/templates/index_footer.html");	
 
 		StringBuilder output = new StringBuilder();
 		
@@ -80,6 +99,12 @@ public class Main {
         }
         
         output.append("</div>");
+        output.append("</div>");
+        
+        for (String key : n.articles.keySet()) {
+            NewsArticle a = n.articles.get(key);
+            output.append(buildInnerPage(n, a));
+        }
         
         output.append(footerTemplate);        
         return output.toString();
