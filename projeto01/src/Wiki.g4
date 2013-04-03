@@ -9,8 +9,8 @@ grammar Wiki;
     int hashs=0;
 }
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs
-BR   : [\n]+;
+BR   : [\n][\n]+;
+WS : [ \t\r\n ]+ -> skip ; // skip spaces, tabs
 STRING: ( ~('"'|'\n') | '\\"' )+;
 
 //##--- Regras ---##//
@@ -22,6 +22,13 @@ wiki:
         hashs=0;
     }
      '"' br? (linha br*)+ '"'
+    {
+        for(int i=0; i<stars; i++)
+            textofinal += "</ul>";
+        for(int i=0; i<hashs; i++)
+            textofinal += "</ol>";
+//        textofinal = textofinal.replaceAll("<br>(<br>)+", "<br><br>");
+    }
     ;
 
 w returns [ String s ]
@@ -31,7 +38,7 @@ w returns [ String s ]
 	
 br
     : BR
-    { textofinal += "\n"; }
+    { textofinal += "</p><p>"; }
     ;
 
 linha
@@ -53,7 +60,7 @@ linha
         String tmp2 = tmp.replaceAll("[^:]*", "");
         for(int i=0; i<tmp2.length(); i++)
             tmp = tmp.replaceAll("^(\\s*:+):", "\$1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-        tmp = tmp.replaceAll("^(\\s*):", "<br>\$1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        tmp = tmp.replaceAll("^(\\s*):", "\$1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
         
         // Links
         tmp = tmp.replaceAll("\\[([^\\]]*)\\|([^\\]]*)\\]", "<a href=\"\$1\">\$2</a>");
@@ -79,7 +86,7 @@ linha
         
         // Tira os asteriscos e cerquilhas
         if ((stars > 0) || (hashs > 0)) {
-            tmp = tmp.replaceAll("#*", "");
+            tmp = tmp.replaceAll("^#*", "");
             tmp = tmp.replaceAll("^\\**", "");
             tmp = tmp.replaceAll("^", "<li>").replaceAll("\$", "</li>");
         }

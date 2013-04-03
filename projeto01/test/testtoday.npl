@@ -12,15 +12,15 @@ content {
 		source: "odiario.com"
 		date: "03 de Abril de 2013"
 		author: "Marcelo Gomes"
-		text: "O ônibus da Viação Paranapuan que despencou na Avenida Brasil de um viaduto na região de Bonsucesso, na zona norte do Rio de Janeiro, na tarde de terça-feira (2) estava com a vistoria anual obrigatória do Detran-RJ vencida. De acordo com o site do Detran-RJ, o último licenciamento do coletivo, placa KYI 0973, foi feito em 2011. 
+		text: ":O ônibus da Viação Paranapuan que despencou na Avenida Brasil de um viaduto na região de Bonsucesso, na zona norte do Rio de Janeiro, na tarde de terça-feira (2) estava com a vistoria anual obrigatória do Detran-RJ vencida. De acordo com o site do Detran-RJ, o último licenciamento do coletivo, placa KYI 0973, foi feito em 2011. 
 
-Fabricado em 2007, o ônibus acumula 47 multas desde 2008, que somam R$ 4,4 mil, segundo a página da Secretaria Municipal de Transportes (SMTR) na internet. A última infração foi registrada em 19 de março, às 14h03, por transitar na Avenida Presidente Vargas, no Centro do Rio, acima da velocidade permitida. Há outras 13 multas por excesso de velocidade, e 12 por avanço de sinal. Já a vistoria feita pela SMTR estava em dia: a última ocorreu em 3 de julho do ano passado, e tem validade de um ano.
+:Fabricado em 2007, o ônibus acumula 47 multas desde 2008, que somam R$ 4,4 mil, segundo a página da Secretaria Municipal de Transportes (SMTR) na internet. A última infração foi registrada em 19 de março, às 14h03, por transitar na Avenida Presidente Vargas, no Centro do Rio, acima da velocidade permitida. Há outras 13 multas por excesso de velocidade, e 12 por avanço de sinal. Já a vistoria feita pela SMTR estava em dia: a última ocorreu em 3 de julho do ano passado, e tem validade de um ano.
 
-O acidente deixou sete mortos e 11 feridos, dois em estado gravíssimo. Os mortos foram identificados pelos bombeiros como Luiz Antônio do Amaral, de 41 anos; Marcius Flávio do Nascimento, de 36; Oséas da Silva Cardoso, de 39; Ângela Maria Reis da Silva, de 62; Francisco Batista de Souza, de 40; José Aparecido de Jesus, de 41; e Luciana Chagas da Silva, de 26. 
+:O acidente deixou sete mortos e 11 feridos, dois em estado gravíssimo. Os mortos foram identificados pelos bombeiros como Luiz Antônio do Amaral, de 41 anos; Marcius Flávio do Nascimento, de 36; Oséas da Silva Cardoso, de 39; Ângela Maria Reis da Silva, de 62; Francisco Batista de Souza, de 40; José Aparecido de Jesus, de 41; e Luciana Chagas da Silva, de 26. 
 
-Até às 9h desta quarta-feira (3), apenas o corpo de Marcius já havia sido retirado por parentes no Instituto Médico-Legal (IML) para sepultamento. Ele será enterrado às 16h, no Cemitério de São Gonçalo, na Região Metropolitana do Rio.
+:Até às 9h desta quarta-feira (3), apenas o corpo de Marcius já havia sido retirado por parentes no Instituto Médico-Legal (IML) para sepultamento. Ele será enterrado às 16h, no Cemitério de São Gonçalo, na Região Metropolitana do Rio.
 
-O motorista do ônibus, André Luiz Souza Oliveira, de 33 anos, está internado no Hospital Estadual Getúlio Vargas, na Penha. Ele teve fratura na perna, traumatismo craniano e está em estado de choque. O quadro dele é estável. O delegado José Pedro Costa da Silva, da 21ª Delegacia de Polícia (Bonsucesso) chegou a conversar com ele informalmente na noite de terça-feira. O delegado quer ouvi-lo de novo o motorista não estava em condições de prestar depoimento."
+:O motorista do ônibus, André Luiz Souza Oliveira, de 33 anos, está internado no Hospital Estadual Getúlio Vargas, na Penha. Ele teve fratura na perna, traumatismo craniano e está em estado de choque. O quadro dele é estável. O delegado José Pedro Costa da Silva, da 21ª Delegacia de Polícia (Bonsucesso) chegou a conversar com ele informalmente na noite de terça-feira. O delegado quer ouvi-lo de novo o motorista não estava em condições de prestar depoimento."
 	}
 	
 	n2{
@@ -60,12 +60,34 @@ As inundações acontecem na capital argentina pela existência de antigos curso
 		image: "./n3.gif"
 		source: "TSF Online"
 		date: "03 de Abril de 2013"
-		text: "O ministro da Saúde, Paulo Macedo, negou hoje ter pedido para deixar o Governo, afirmando que não está cansado.
+		text: ":O ministro da Saúde, Paulo Macedo, negou hoje ter pedido para deixar o Governo, afirmando que não está cansado.
 		O ministro da Saúde considera «inadmissível» alegar cansaço para deixar o Governo perante as dificuldades.
 No Parlamento, Paulo Macedo foi confrontado com a notícia do jornal Público, segundo a qual os ministros da Justiça, Paula Teixeira da Cruz, e o ministro da Saúde solicitaram a saída do Governo, alegando algum cansaço.
-Na resposta, o ministro respondeu: «A notícia é totalmente falsa, não tem qualquer ponto de verdade; portanto, desminto-a categoricamente.»
+
+:Na resposta, o ministro respondeu: «A notícia é totalmente falsa, não tem qualquer ponto de verdade; portanto, desminto-a categoricamente.»
 «Cansaço, só se for de subir todos os dias os seis pisos do Ministério da Saúde, mas faço-o voluntariamente», disse.
-Ainda na comissão parlamentar, e numa pergunta levantada pelo PCP, o ministro assegurou que a reforma do Estado não vai mexer com as taxas moderadoras."
+Ainda na comissão parlamentar, e numa pergunta levantada pelo PCP, o ministro assegurou que a reforma do Estado não vai mexer com as taxas moderadoras.
+
+=== País do faz-de-conta ===
+
+
+Durante minhas breves semanas de descanso, alguns leitores me escreveram \"encomendando\" artigos sobre a lei seca e o caso Daniel Dantas. Para não descontentar ninguém, arrisco uma manobra temerária: vou comentar os dois assuntos valendo-me de uma mesma chave interpretativa que me parece especialmente valiosa para entender o Brasil de hoje. Comecemos pela lei seca.
+
+: Como ferrenho entusiasta daquilo que se convencionou chamar de liberdades, defendo até as últimas consequências o direito das pessoas de embriagar-se, drogar-se e fazer tudo o que bem entenderem com seus próprios corpos e mentes. Ainda assim, o conceito por trás da lei seca é inatacável: você tem o direito de beber até cair; mas, para tanto, precisa renunciar momentaneamente a outros direitos, como o de dirigir veículos automotores ou operar máquinas pesadas, posto que fazê-lo com reflexos e capacidade de decisão diminuídos pelo álcool representa um risco para terceiros. Cada qual é livre para submeter-se a qualquer nível de perigo que julgue conveniente, mas não para impor essa decisão individual a outras pessoas. Para aqueles que insistem muito em manter seu direito de beber e dirigir simultaneamente, sugiro que organizemos em autódromos corridas a ser disputadas exclusivamente por motoristas bêbados. Só participa quem quer e nenhum incauto é apanhado de surpresa. Seria uma forma inteligente de conciliar máxima liberdade e os ditames da razoável segurança social.
+
+: Apesar dessa defesa forte da filosofia por trás da lei seca, a norma como foi escrita encerra dois vícios nacionais: competência de menos e amor demais pelo marketing. Em termos exclusivamente técnicos, a nova regra, enunciada na lei n 11.705 , que alterou o Código de Trânsito Brasileiro (CTB), é um desastre. Em vez de endurecer a punição a infratores, como aparenta fazer, ela poderá abrir uma avenida para que escapem à sanção. Falo ''especificamente'' da nova '''redação''' do artigo 306 do CTB, que '''''prevê''''' a detenção. Aqui, o legislador inadvertidamente modificou o tipo penal, que passou de conduzir veículo \"sob a influência de álcool\" para \"com concentração de álcool por litro de sangue igual ou superior a 6 decigramas\". Ocorre que há farta jurisprudência estabelecendo que nenhum cidadão é obrigado a produzir prova contra si mesmo. Assim, se o motorista recusar-se a soprar o bafômetro ou ceder sangue para análise laboratorial, não haveria como provar que ele excedeu a quantidade máxima tolerada. Testemunhas capacitadas e com fé pública até podem assegurar que o sujeito estava bêbado como um gambá, mas não que ele excedeu os tais 6 dg/l. E, sem prova competente, não pode haver crime. Em relação à multa e suspensão da carteira de motorista www.uol.com.br, sanção administrativa prevista no art. 165, o problema não se coloca, pois ali o tipo infracional permanece enunciado como \"dirigir sob influência\", fato em princípio aferível por policiais, médicos legistas e até cidadãos comuns. O que mais me incomoda, entretanto, é o grande teatro que se montou neste caso. Dirigir embriagado era proibido no Brasil mesmo antes da edição da nova regra. Se muitos motoristas não observavam a norma, é principalmente porque a polícia não a implementava. A aparentemente notável redução de acidentes de trânsito proporcionada pela lei seca se deve muito mais ao surgimento da fiscalização do que à mudança nos limites para a alcoolemia e nas penas.
+* teste1
+* teste2
+* teste3
+** teste4
+** teste5
+* teste final
+# ordem1
+# ordem2
+## ordem3
+### ordem4
+### ordem5
+# ordem5"
 	}
 	
 	n4{
