@@ -15,6 +15,7 @@ clean:
 	(cd src && find . -type f -name "NPL*.tokens" -exec rm -f {} \; )
 	(cd src && find . -type f -name "Wiki*.java" -exec rm -f {} \; )
 	(cd src && find . -type f -name "Wiki*.tokens" -exec rm -f {} \; )
+	(cd test && find . -type f -name "*.html" -exec rm -f {} \; )
 	(rm -rf bin)
 
 run:
@@ -22,13 +23,13 @@ run:
 	(java br.unicamp.mc011.projeto01.Main < $(INPUT) > $(OUTPUT))
 	
 testexemplo:
-	(java br.unicamp.mc011.projeto01.Main < test/exemplo.npl > index.html)
+	(java br.unicamp.mc011.projeto01.Main < test/exemplo.npl > test/index.html)
 
 test0:
-	(java br.unicamp.mc011.projeto01.Main $X < test/test0.npl > index.html)
+	(java br.unicamp.mc011.projeto01.Main $X < test/test0.npl > test/index.html)
 
 test1:
-	(java br.unicamp.mc011.projeto01.Main $X < test/test1.npl > index.html)
+	(java br.unicamp.mc011.projeto01.Main $X < test/test1.npl > test/index.html)
 	
 test2:
-	(java br.unicamp.mc011.projeto01.Main $X < test/testtoday.npl > index.html)
+	(java br.unicamp.mc011.projeto01.Main $X < test/testtoday.npl > test/index.html)

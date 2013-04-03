@@ -26,7 +26,7 @@ wiki:
 
 w returns [ String s ]
 	: wiki
-	{ $s = textofinal; }
+	{ $s = "<p>" + textofinal + "</p>"; }
 	;
 	
 br

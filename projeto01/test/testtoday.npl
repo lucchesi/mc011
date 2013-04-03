@@ -9,7 +9,6 @@ content {
 	n1{
 		title: "Ônibus que caiu de viaduto estava com vistoria vencida"
 		abstract: "O ônibus da Viação Paranapuan que despencou na Avenida Brasil de um viaduto na região de Bonsucesso, na zona norte do Rio de Janeiro, na tarde de terça-feira (2) estava com a vistoria anual obrigatória do Detran-RJ vencida. De acordo com o site do ..."
-		image: "./n1.jpg"
 		source: "odiario.com"
 		date: "03 de Abril de 2013"
 		author: "Marcelo Gomes"
@@ -26,7 +25,13 @@ O motorista do ônibus, André Luiz Souza Oliveira, de 33 anos, está internado 
 	
 	n2{
 		title: "Inundação histórica deixa 50% de cidade argentina debaixo d'água"
-		abstract: "Ao menos seis pessoas morreram em decorrência do forte temporal que atingiu a cidade de Buenos Aires, capital da Argentina, durante a última madrugada. Segundo o Serviço de Emergência Metropolitano, a cidade está em estado de alerta. De acordo ..."
+		abstract: "Uma pessoa morreu e outras 2.200 tiveram de ser evacuadas em La Plata, sul de Buenos Aires, em uma inundação histórica que chegou a cobrir na quarta-feira 50% da cidade, capital do principal distrito do país, informaram as autoridades.
+
+\"Temos um morto confirmado pela polícia, mas esta catástrofe permite supor que há circunstâncias muito graves e pode haver outras. Mais de 50% da cidade ficou sob as águas, que começam a baixar, e temos 2.200 evacuados\", informou o chefe de gabinete da prefeitura de La Plata, Santiago Martorelli, falando ao canal C5N.
+
+Martorelli admitiu que há vítimas fatais, mas que, por ora, não pode confirmar nenhuma informação.
+
+O temporal que também atingiu a capital deixou 8 mortos e atingiu 350.000 pessoas, e depois se deslocou para o sul, atingindo em cheio a cidade de La Plata, onde caíram 400 milímetros de água em duas horas. ..."
 		image: "./n2.jpg"
 		source: "Terra Brasil"
 		date: "03 de Abril de 2013"
@@ -52,7 +57,7 @@ As inundações acontecem na capital argentina pela existência de antigos curso
 	n3{
 		title: "Paulo Macedo nega que tenha pedido para sair do Governo"
 		abstract: "O ministro da Saúde, Paulo Macedo, negou hoje ter pedido para deixar o Governo, afirmando que não está cansado. ..."
-		image: "./n3.jpg"
+		image: "./n3.gif"
 		source: "TSF Online"
 		date: "03 de Abril de 2013"
 		text: "O ministro da Saúde, Paulo Macedo, negou hoje ter pedido para deixar o Governo, afirmando que não está cansado.
@@ -62,29 +67,66 @@ Na resposta, o ministro respondeu: «A notícia é totalmente falsa, não tem qu
 «Cansaço, só se for de subir todos os dias os seis pisos do Ministério da Saúde, mas faço-o voluntariamente», disse.
 Ainda na comissão parlamentar, e numa pergunta levantada pelo PCP, o ministro assegurou que a reforma do Estado não vai mexer com as taxas moderadoras."
 	}
+	
+	n4{
+		title: "Lei Carolina Dieckmann enfrentará dificuldades na prática"
+		abstract:  "Embora a Lei 12.737/2012, apelidada de Lei Carolina Dieckmann — por causa do vazamento de fotos da atriz nua —, seja considerada um avanço no tratamento de crimes cibernéticos, as dificuldades oferecidas pelo universo virtual podem prejudicar a aplicação das regras na prática. Na opinião de especialistas, a nova legislação promulgada nesta terça-feira (2/4) ainda deixa lacunas, como a necessidade de violação de dispositivo de segurança para configurar crime e a imprecisão de termos técnicos. ..."
+		source: "Consultor Jurídico"
+		date: "03 de Abril de 2013"
+		text: ":Embora a Lei 12.737/2012, apelidada de Lei Carolina Dieckmann — por causa do vazamento de fotos da atriz nua —, seja considerada um avanço no tratamento de crimes cibernéticos, as dificuldades oferecidas pelo universo virtual podem prejudicar a aplicação das regras na prática. Na opinião de especialistas, a nova legislação promulgada nesta terça-feira (2/4) ainda deixa lacunas, como a necessidade de violação de dispositivo de segurança para configurar crime e a imprecisão de termos técnicos. 
+
+:Até agora, a Justiça se baseava em tipos previstos pelo Código Penal para aplicar punições. Invasão de computadores, roubos de senhas e conteúdos de mensagens eletrônicas, a derrubada proposital de portais e o uso não autorizado de dados de cartões passam a ser tipificados como crimes. As penas serão aumentadas se houver divulgação, comercialização ou transmissão a terceiros do material obtido na invasão. A captura de informações privadas, segredos comerciais ou industriais e dados protegidos por sigilo judicial é considerada agravante. 
+
+:Ainda há previsão de aumento de pena de um terço à metade em casos de crimes praticados contra o presidente da república, os presidentes do Supremo Tribunal Federal, o da Câmara dos Deputados, do Senado das Assembleias Legislativas de estado, da Câmara Legislativa do Distrito Federal e para as Câmaras Municipais. Os crimes praticados contra dirigentes máximos da administração direta e indireta federal, estadual, municipal ou do Distrito Federal também estão na lista. A legislação ainda inclui no Código Penal a equivalência entre cartões de crédito e débito a documentos pessoais.
+
+:Parte dos crimes que ocorrem na internet têm correspondência na lei penal — como estelionato, fraudes, furtos e ofensas. Por isso, o criminalista Fábio Tofic Simantob afirma que a alteração legislativa deve concentrar esforços na tipificação de crimes contra sistemas informáticos, e não aqueles praticados pela via digital. \"Qualquer mudança visando readequá-los à realidade eletrônica correria o risco de incorrer em casuísmos excessivos e virar sucata com a mesma fugacidade das novas tecnologias\", alerta. A Lei Carolina Dieckmann está em acordo com a Convenção de Budapeste sobre Cibercrimes, de 2001.
+
+:As penas previstas pela nova lei variam entre três meses e um ano de detenção. Em relação à dosimetria, o presidente da Comissão de Direito Eletrônico e Crimes de Alta Tecnologia da Ordem dos Advogados do Brasil de São Paulo, Coriolano Almeida Camargo, não acredita que as punições sejam brandas. \"Não temos no Brasil registro de diminuição dos delitos em função de penas mais severas\", afirma. Para ele, a educação digital e as ações preventivas têm mais poder de transformar a mentalidade dos cidadãos.
+
+=== Brechas jurídicas ===
+:Para o advogado Carlo Frederico Müller, sócio do Müller e Müller Advogados, a lei foi criada às pressas, praticamente em resposta aos anseios da opinião pública e de casos que envolviam celebridades. Ele defende que os administradores de redes sociais, por falta de controle de acesso, deveriam ser responsabilizados criminalmente em situações de injúrias, difamações e outras infrações contra terceiros.
+
+:Outra ressalva do especialista é a previsão de crime apenas se houver violação dos dispositivos de segurança. \"Nunca estará protegida a maior parte da população, que é leiga e não tem recursos para comprar e atualizar softwares de proteção de seus computadores, tablets ou smartphones\", afirma. O presidente da Subseção de Pinheiros, em São Paulo, da Ordem dos Advogados do Brasil, Pedro Iokoi, aponta quebra do princípio de isonomia nesse trecho da lei. \"O texto não protege de modo igual os dispositivos que têm ou não senha. O crime não pode ficar condicionado à presença de barreira de segurança\", afirma.
+
+:De acordo com o especialista David Rechulski, o tipo penal \"invadir\" remete à ocupação ou conquista pela força e de modo abusivo. A transposição de mecanismo segurança seria, portanto, necessária para caracterizar a invasão do dispositivo informático. Ele ainda afirma que a hipótese de crime é cogitada apenas se o agente tiver finalidade de obter, adulterar ou destruir informações armazenadas. \"O indevido acesso por si só, ainda que com violação de mecanismos de segurança, não recebeu reprimenda do legislador\", conclui Rechulski.
+
+:O criminalista Luiz Augusto Sartori de Castro, do Vilardi Advogados, teme que a maioria daqueles que acessam indevidamente os sistemas de informáticas não sejam punidos pelo Judiciário. \"Isso porque não o fazem à força como exige o tipo penal ao se valer do verbo ‘invadir’\", explica. Outro entrave nos tribunais serão de natureza processual. Delitos dessa natureza demandam provas cujo sistema da polícia judiciária não está acostumado e pode gaver problemas de prescrição e regulamentação.
+
+:O uso do termo \"dispositivo informático\" também é criticado. \"Hoje há uma grande quantidade de aparelhos que permitem o acesso à internet, como celulares, televisões e até geladeiras. O legislador deveria ter usado a expressão ‘dispositivo eletrônico\", diz o advogado Pedro Iokoi. Para que haja crime, não há necessidade que o dispositivo esteja conectado com a internet, pois a invasão pode ocorrer via Bluetooth, por exemplo. Para ele, os arquivos armazenados em nuvem estão protegidos porque há expectativa de privacidade. Para Coriolano Almeida Camargo, os invasões de redes sociais também estão enquadradas. \"Muitas vezes o ataque em redes sociais trata-se de crime conta a honra, já tipificado no Código Penal\", ressalta.
+
+=== Lei Azeredo ===
+:Depois de longa polêmica, também entra em vigor nesta terça-feira a lei para crimes cibernéticos proposta em 1999 pelo então deputado federal Eduardo Azeredo (PSDB-MG). O projeto foi um dos que passou mais tempo em tramitação na Câmara. Entre os pontos polêmicos do texto, estavam a responsabilização de provedores de fiscalizar e armazenar os registros de atividade dos usuários. As normas sugeridas eram consideradas muito restritivas, o que dificultou sua aprovação. 
+
+:O tema central do texto que passa a valer a partir de agora é a determinação para que a polícia estruture seções especializadas para crimes virtuais. Para as cidades que não tenham esse setor, deve-se procurar a Polícia Civil. Atualmente poucos municípios, na maioria capitais, possuem delegadas especializadas. Outra das mudanças trazidas pela lei é a possibilidade de um juiz decidir que uma publicação racista, eletrônica ou de outro meio, seja interrompida."
+	}
 }
 
 structure {
 	format{
-		col: 3
-		border: 20
+		col: 4
+		border: 30
 	}
 	
 	item[1:2]{
 		n1.title
-		n1.image
 		n1.abstract
 		n1.readmore
 	}
 	
-	item[3]{
+	item[3:4]{
 		n3.title
 		n3.image
 		n3.abstract
 		n3.readmore
 	}
 	
-	item[1:3]{
+	item[1]{
+		n4.title
+		n4.abstract
+		n4.readmore
+	}
+	
+	item[2:4]{
 		n2.title
 		n2.image
 		n2.abstract
