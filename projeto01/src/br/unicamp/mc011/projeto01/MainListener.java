@@ -124,7 +124,12 @@ public class MainListener implements NPLListener {
 	public void enterFormat_(Format_Context ctx) { }
 
 	@Override
-	public void exitFormat_(Format_Context ctx) { }
+	public void exitFormat_(Format_Context ctx) {
+		if(ctx.col_() != null)
+			newspaper.numCols = Integer.parseInt(ctx.col_().NUM().getText());
+		if(ctx.border_() != null)
+			newspaper.border = Integer.parseInt(ctx.border_().NUM().getText());
+	}
 
 	@Override
 	public void enterCont(ContContext ctx) { }
@@ -134,9 +139,9 @@ public class MainListener implements NPLListener {
 		Newsp_Context c = ctx.newsp_();
 		
 		//TODO: tratar repeticao
-		newspaper.title = c.title_().getText();
+		newspaper.title = unescape(c.title_().STRING().getText());
 		//TODO: se for null?
-		newspaper.date = c.date_().getText();
+		newspaper.date = unescape(c.date_().STRING().getText());
 	}
 
 	@Override
@@ -155,9 +160,11 @@ public class MainListener implements NPLListener {
 		if(ctx.range() != null){
 			n.firstCol = Integer.parseInt(ctx.range().NUM(0).getText());
 			n.lastCol = Integer.parseInt(ctx.range().NUM(1).getText());
-		} else {
+		} else if(ctx.NUM() != null) {
 			n.firstCol = Integer.parseInt(ctx.NUM().getText());
 			n.lastCol = Integer.parseInt(ctx.NUM().getText());
+		} else {
+			return;
 		}
 		
 		for(PrintContext o : ctx.print())

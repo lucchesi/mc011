@@ -9,8 +9,8 @@ public class Newspaper {
 	public String title;
 	public String date;
 	
-	public int numCols;
-	public int border;
+	public int numCols = 1;
+	public int border = 10;
 	
 	public Map<String, NewsArticle> articles = new HashMap<String, NewsArticle>();
 	public List<NewspaperItem> items = new ArrayList<NewspaperItem>();

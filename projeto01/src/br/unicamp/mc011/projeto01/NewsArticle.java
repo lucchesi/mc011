@@ -37,9 +37,9 @@ public class NewsArticle {
     
     public String getTitleHTML() {
     	StringBuilder b = new StringBuilder();
-    	b.append("<h1 class=\"title\">");
+    	b.append("<h2 class=\"title\">");
     	b.append(fields.get("title"));
-    	b.append("</h1>");
+    	b.append("</h2>");
     	
     	return b.toString();
     }
@@ -55,7 +55,7 @@ public class NewsArticle {
     
     public String getImageHTML() {
     	StringBuilder b = new StringBuilder();
-    	b.append("<img class=\"image\" src=\"");
+    	b.append("<img class=\"image img-polaroid\" src=\"");
 		b.append(fields.get("image"));
     	b.append("\" >");
     	
@@ -64,7 +64,7 @@ public class NewsArticle {
     
     public String getSourceHTML() {
     	StringBuilder b = new StringBuilder();
-    	b.append("<span class=\"source\"><b>Fonte:</b> ");
+    	b.append("<span class=\"source\"><strong>Fonte:</strong> ");
     	b.append(fields.get("source"));
     	b.append("</span>");
     	
@@ -73,7 +73,7 @@ public class NewsArticle {
     
     public String getDateHTML() {
     	StringBuilder b = new StringBuilder();
-    	b.append("<span class=\"date\"><b>Data:</b> ");
+    	b.append("<span class=\"date\"><strong>Data:</strong> ");
     	b.append(fields.get("date"));
     	b.append("</span>");
     	
@@ -82,7 +82,7 @@ public class NewsArticle {
     
     public String getAuthorHTML() {
     	StringBuilder b = new StringBuilder();
-    	b.append("<span class=\"author\"><b>Autor:</b> ");
+    	b.append("<span class=\"author\"><strong>Autor:</strong> ");
     	b.append(fields.get("author"));
     	b.append("</span>");
     	
