@@ -13,6 +13,7 @@ ABSTRACT: 'abstract';
 TEXT: 'text';
 SOURCE: 'source';
 IMAGE: 'image';
+CAPTION: 'caption';
 AUTHOR: 'author';
 STRUCTURE: 'structure';
 FORMAT: 'format';
@@ -67,7 +68,7 @@ news_
     : NEWS LCURL news_obj+ RCURL
     ;
 
-news_obj_token: TITLE | ABSTRACT | IMAGE | SOURCE | DATE | AUTHOR | TEXT | READMORE;
+news_obj_token: TITLE | ABSTRACT | IMAGE | CAPTION | SOURCE | DATE | AUTHOR | TEXT | READMORE;
 news_obj
     : news_obj_token COLON STRING
     ;

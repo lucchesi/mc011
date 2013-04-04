@@ -65,9 +65,15 @@ linha
         // Links
         tmp = tmp.replaceAll("\\[([^\\]]*)\\|([^\\]]*)\\]", "<a href=\"\$1\">\$2</a>");
         
-        // URL solta
+        // Blockquotes
+        tmp = tmp.replaceAll("\\{([^\\}]*)\\|([^\\}]*)\\}", "<blockquote class='pull-right'><p>\$2</p><small>\$1</small></blockquote>");
+	
+	 // URL solta
         tmp = tmp.replaceAll("([^\"])(http://[a-z0-9.]*)([^\"])", "\$1<a href=\"\$2\">\$2</a>\$3");
         
+	// Youtube
+	tmp = tmp.replaceAll("\\[youtube ([A-Za-z0-9_\\-]{11})\\]", "<div style='margin:0 auto; width: 580px; padding: 10px;'><iframe width='560' height='315' src='http://www.youtube.com/embed/\$1' frameborder='0' allowfullscreen></iframe></div>");
+
         // Lista bullet
         tmp2 = tmp.replaceAll("(\\**).*","\$1"); // Deixa só os asteriscos
         for(int i=0; i<tmp2.length()-stars; i++)

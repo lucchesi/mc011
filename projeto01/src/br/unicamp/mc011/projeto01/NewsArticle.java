@@ -41,9 +41,9 @@ public class NewsArticle {
     		return "";
     	
     	StringBuilder b = new StringBuilder();
-    	b.append("<h2 class=\"title\">");
+    	b.append("<h3 class=\"title\">");
     	b.append(fields.get("title"));
-    	b.append("</h2>");
+    	b.append("</h3>");
     	
     	return b.toString();
     }
@@ -65,10 +65,12 @@ public class NewsArticle {
     		return "";
     	
     	StringBuilder b = new StringBuilder();
+
     	b.append("<img class=\"image-center img-polaroid\" src=\"");
 		b.append(fields.get("image"));
     	b.append("\" >");
-    	
+	if(fields.containsKey("caption"))
+		b.append("<p class='caption'>" + fields.get("caption") + "</p>");     	
     	return b.toString();
     }
     
