@@ -129,14 +129,37 @@ public class Codegen{
     	Exp dst = stm.getDestination();
      	
     	if(dst instanceof tree.MEM){
-        	Temp srcRegs = munchExp(src);
-        	Temp dstRegs = munchExp(((tree.MEM)dst).getExpression());
-        	
-    		program.append(new assem.OPER(
-    				"mov [`u0], `u1",
-    				null,
-    				new List<Temp>(dstRegs, srcRegs)
-    				));
+			tree.MEM mem = (tree.MEM) dst;
+			
+			// mov with mem + const at the destination
+			if(mem.getExpression() instanceof tree.BINOP) {
+				tree.BINOP binop = (tree.BINOP) mem.getExpression();
+				Temp srcRegs = munchExp(src);
+
+				if(binop.getOperation() == 0) { // 0 means add
+					if(binop.getLeft() instanceof tree.TEMP &&
+							binop.getRight() instanceof tree.CONST)
+					{
+						Temp dstRegs = munchExp(binop.getLeft());
+						long val = ((tree.CONST)binop.getRight()).getValue();
+						program.append(new assem.OPER(
+									"mov dword [`u0 + " + val + "], `u1",
+									null,
+									new List<Temp>(dstRegs, srcRegs)
+									));
+						return;
+					}
+				}
+			}
+
+			Temp srcRegs = munchExp(src);
+			Temp dstRegs = munchExp(((tree.MEM)dst).getExpression());
+
+			program.append(new assem.OPER(
+						"mov [`u0], `u1",
+						null,
+						new List<Temp>(dstRegs, srcRegs)
+						));
     	} else {
         	Temp srcRegs = munchExp(src);
         	Temp dstRegs = ((tree.TEMP)dst).getTemp();
@@ -154,188 +177,148 @@ public class Codegen{
     }    
     
     /* Expressions implementation */
-    
-    public Temp munchExp(tree.BINOP exp){
-    	// TODO: Refactor, add more efficient instructions
-    	// with consts / direct memory references
-    	
+
+	public Temp munchAddLike(tree.BINOP exp, String op){
     	Temp result = new Temp();
     	Temp right;
-        Temp left = munchExp(exp.getLeft());
-        program.append(new assem.MOVE(
-        		result,
-        		left
-        		));
-
+        Temp left;
+       	Exp leftExp = exp.getLeft();
        	Exp rightExp = exp.getRight();
-    	
-    	switch(exp.getOperation()){
-    	
-    	case tree.BINOP.AND:
-    		if(rightExp instanceof tree.CONST){
-    			program.append(new assem.OPER(
-    					"and `d0, " + ((tree.CONST)rightExp).getValue(),
-    					new List<Temp>(result),
-    					new List<Temp>(result)
-    					));
-    		} else {
-    	        right = munchExp(exp.getRight());
-        		program.append(new assem.OPER(
-        				"and `d0, `u0",
-        				new List<Temp>(result),
-        				new List<Temp>(right, result)
-        				));
-    		}
+		
+		left = munchExp(exp.getLeft());
+		program.append(new assem.MOVE(
+					result,
+					left
+					));
+		
+		String inc = "no_inc";
+		if(op=="add")
+			inc = "inc";
+		else if(op=="sub")
+			inc = "dec";
 
-    		break;
-    		
-    	case tree.BINOP.ARSHIFT:
-    		if(! (rightExp instanceof tree.CONST) )
-    			// TODO: Maybe handle this somehow?
-    			throw new Error("Invalid ARSHIFT");
-    		
-    		program.append(new assem.OPER(
-    				"sar `d0, " + ((tree.CONST)rightExp).getValue(),
-    				new List<Temp>(result),
-    				new List<Temp>(result)
-    				));
-    		break;
-    		
-    	case tree.BINOP.DIV:
-	        right = munchExp(exp.getRight());
+		if(rightExp instanceof tree.CONST){
+			long val = ((tree.CONST) rightExp).getValue();
+			// add 1 = increment
+			if(val == 1 && inc != "no_inc") {
+				program.append(new assem.OPER(
+							inc + " `d0",
+							new List<Temp>(result),
+							new List<Temp>(result)
+							));
+			} else {
+				program.append(new assem.OPER(
+							op + " `d0, " + ((tree.CONST)rightExp).getValue(),
+							new List<Temp>(result),
+							new List<Temp>(result)
+							));
+			}
+		} else {
+			right = munchExp(exp.getRight());
+			program.append(new assem.OPER(
+						op + " `d0, `u0",
+						new List<Temp>(result),
+						new List<Temp>(right, result)
+						));
+		}
+		return result;
+	}
+	
+	public Temp munchDivLike(tree.BINOP exp, String op){
+    	Temp result = new Temp();
+		Temp right = munchExp(exp.getRight());
+		
+		Temp left = munchExp(exp.getLeft());
+		program.append(new assem.MOVE(
+					result,
+					left
+					));
 
-    		program.append(new assem.MOVE(
-    				Frame.eax,
-    				result
-    				));
-    		
-    		program.append(new assem.OPER("cdq"));
-    		
-    		program.append(new assem.OPER(
-    				"div `u0",
-    				new List<Temp>(Frame.eax, Frame.edx),
-    				new List<Temp>(right, Frame.eax, Frame.edx)
-    				));
-    		
-    		program.append(new assem.MOVE(
-    				result,
-    				Frame.eax
-    				));
-    		
-    		break;
-     		
-    	case tree.BINOP.LSHIFT:
-    		if(! (rightExp instanceof tree.CONST) )
-    			// TODO: Maybe handle this somehow?
-    			throw new Error("Invalid LSHIFT");
-    		
-    		program.append(new assem.OPER(
-    				"shl `d0, " + ((tree.CONST)rightExp).getValue(),
-    				new List<Temp>(result),
-    				new List<Temp>(result)
-    				));
-    		break;
-    		
-    	case tree.BINOP.MINUS:
-    		if(rightExp instanceof tree.CONST){
-    			program.append(new assem.OPER(
-    					"sub `d0, " + ((tree.CONST)rightExp).getValue(),
-    					new List<Temp>(result),
-    					new List<Temp>(result)
-    					));
-    		} else {
-    	        right = munchExp(exp.getRight());
-        		program.append(new assem.OPER(
-        				"sub `d0, `u0",
-        				new List<Temp>(result),
-        				new List<Temp>(right, result)
-        				));
-    		}
-    		break;
-    		
-    	case tree.BINOP.OR:
-    		if(rightExp instanceof tree.CONST){
-    			program.append(new assem.OPER(
-    					"or `d0, " + ((tree.CONST)rightExp).getValue(),
-    					new List<Temp>(result),
-    					new List<Temp>(result)
-    					));
-    		} else {
-    	        right = munchExp(exp.getRight());
-        		program.append(new assem.OPER(
-        				"or `d0, `u0",
-        				new List<Temp>(result),
-        				new List<Temp>(right, result)
-        				));
-    		}
-    		break;
-    		
-    	case tree.BINOP.PLUS:
-    		if(rightExp instanceof tree.CONST){
-    			program.append(new assem.OPER(
-    					"add `d0, " + ((tree.CONST)rightExp).getValue(),
-    					new List<Temp>(result),
-    					new List<Temp>(result)
-    					));
-    		} else {
-    	        right = munchExp(exp.getRight());
-        		program.append(new assem.OPER(
-        				"add `d0, `u0",
-        				new List<Temp>(result),
-        				new List<Temp>(right, result)
-        				));
-    		}
-    		break;
-    		
-    	case tree.BINOP.RSHIFT:
-    		if(! (rightExp instanceof tree.CONST) )
-    			// TODO: Maybe handle this somehow?
-    			throw new Error("Invalid RSHIFT");
-    		
-    		program.append(new assem.OPER(
-    				"shr `d0, " + ((tree.CONST)rightExp).getValue(),
-    				new List<Temp>(result),
-    				new List<Temp>(result)
-    				));
-    		break;
-    		
-    	case tree.BINOP.TIMES:
-	        right = munchExp(exp.getRight());
+		program.append(new assem.MOVE(
+					Frame.eax,
+					result
+					));
 
-    		program.append(new assem.MOVE(
-    				Frame.eax, 
-    				result
-    				));
-    		
+		if(op=="mul"){
     		program.append(new assem.OPER(
     				"mul `u0",
     				new List<Temp>(Frame.eax, Frame.edx),
     				new List<Temp>(right, Frame.eax)
     				));
-    		
-    		program.append(new assem.MOVE(
-    				result,
-    				Frame.eax    				
-    				));   		
+		} else {
+			program.append(new assem.OPER("cdq"));
+			
+			program.append(new assem.OPER(
+					"div `u0",
+					new List<Temp>(Frame.eax, Frame.edx),
+					new List<Temp>(right, Frame.eax, Frame.edx)
+					));
+		}
+
+		program.append(new assem.MOVE(
+					result,
+					Frame.eax
+					));
+
+		return result;
+	}
+	
+	public Temp munchShift(tree.BINOP exp, String op){
+    	Temp result = new Temp();
+       	Exp rightExp = exp.getRight();
+		
+		Temp left = munchExp(exp.getLeft());
+		program.append(new assem.MOVE(
+					result,
+					left
+					));
+		
+		if(! (exp.getRight() instanceof tree.CONST) )
+			// TODO: Maybe handle this somehow?
+			throw new Error("Invalid SHIFT");
+
+		program.append(new assem.OPER(
+					op + " `d0, " + ((tree.CONST)rightExp).getValue(),
+					new List<Temp>(result),
+					new List<Temp>(result)
+					));
+		return result;
+	}
+	
+    public Temp munchExp(tree.BINOP exp){
+    	Temp result = new Temp();
+
+    	switch(exp.getOperation()){
+    	case tree.BINOP.AND:
+			result = munchAddLike(exp, "and");
     		break;
-    		
+    	case tree.BINOP.ARSHIFT:
+			result = munchShift(exp, "sar");
+    		break;
+    	case tree.BINOP.DIV:
+			result = munchDivLike(exp, "div");
+    		break;
+    	case tree.BINOP.LSHIFT:
+			result = munchShift(exp, "shl");
+    		break;
+    	case tree.BINOP.MINUS:
+			result = munchAddLike(exp, "sub");
+    		break;
+    	case tree.BINOP.OR:
+			result = munchAddLike(exp, "or");
+    		break;
+    	case tree.BINOP.PLUS:
+			result = munchAddLike(exp, "add");
+    		break;
+    	case tree.BINOP.RSHIFT:
+			result = munchShift(exp, "shr");
+    		break;
+    	case tree.BINOP.TIMES:
+			result = munchDivLike(exp, "mul");
+    		break;
     	case tree.BINOP.XOR:
-    		if(rightExp instanceof tree.CONST){
-    			program.append(new assem.OPER(
-    					"xor `d0, " + ((tree.CONST)rightExp).getValue(),
-    					new List<Temp>(result),
-    					new List<Temp>(result)
-    					));
-    		} else {
-    	        right = munchExp(exp.getRight());
-        		program.append(new assem.OPER(
-        				"xor `d0, `u0",
-        				new List<Temp>(result),
-        				new List<Temp>(right, result)
-        				));
-    		}
+			result = munchAddLike(exp, "xor");
     		break;
-    		
     	default:
     		throw new Error("Unknown BINOP");
     	}
@@ -399,8 +382,6 @@ public class Codegen{
     }
 
     public Temp munchExp(tree.MEM exp){
-    	// TODO: Express›es mais eficientes com MEM
-    	// (consts, binops, etc)
     	Temp expResult = munchExp(exp.getExpression());
     	Temp result = new Temp();
     	
