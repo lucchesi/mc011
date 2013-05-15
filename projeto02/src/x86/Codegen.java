@@ -140,14 +140,26 @@ public class Codegen{
 					if(binop.getLeft() instanceof tree.TEMP &&
 							binop.getRight() instanceof tree.CONST)
 					{
-						Temp dstRegs = munchExp(binop.getLeft());
-						long val = ((tree.CONST)binop.getRight()).getValue();
-						program.append(new assem.OPER(
-									"mov dword [`u0 + " + val + "], `u1",
-									null,
-									new List<Temp>(dstRegs, srcRegs)
-									));
-						return;
+						if(src instanceof tree.CONST){
+							Temp dstRegs = munchExp(binop.getLeft());
+							long val = ((tree.CONST)binop.getRight()).getValue();
+							long val2 = ((tree.CONST)src).getValue();
+							program.append(new assem.OPER(
+										"mov dword [`u0 + " + val + "], " + val2,
+										null,
+										new List<Temp>(dstRegs)
+										));
+							return;
+						} else {
+							Temp dstRegs = munchExp(binop.getLeft());
+							long val = ((tree.CONST)binop.getRight()).getValue();
+							program.append(new assem.OPER(
+										"mov dword [`u0 + " + val + "], `u1",
+										null,
+										new List<Temp>(dstRegs, srcRegs)
+										));
+							return;
+						}
 					}
 				}
 			}
@@ -349,16 +361,23 @@ public class Codegen{
     				));
     	}
 
-    	
-    	Temp callable = munchExp(exp.getCallable());
+		// Call by name if callable is tree.NAME
+		if (exp.getCallable() instanceof tree.NAME) {
+			Label callable = ((tree.NAME)exp.getCallable()).getLabel();
+			program.append(new assem.OPER(
+					"call " + callable,
+					frame.calleeDefs(),
+					null
+					));
+		} else {
+			Temp callable = munchExp(exp.getCallable());
+			program.append(new assem.OPER(
+					"call `u0",
+					frame.calleeDefs(),
+					new List<Temp>(callable, argRegisters)
+					));
+		}
 
-    	// TODO: call by name if callable is tree.NAME
-    	program.append(new assem.OPER(
-				"call `u0",
-				frame.calleeDefs(),
-				new List<Temp>(callable, argRegisters)
-				));
-    	
     	// Restore stack pointer
     	program.append(new assem.OPER(
     			"add `d0, " + (frame.wordsize() * callArgs.size()),
