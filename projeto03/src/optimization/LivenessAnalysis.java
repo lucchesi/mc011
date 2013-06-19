@@ -18,10 +18,10 @@ public class LivenessAnalysis {
 	public Hashtable<Node, HashSet<Temp>> use; 
 	
 	public ArrayList<Node> nodes;
-	public Hashtable<Node, HashSet<boolean>> mark; 
+	public Hashtable<Node, Boolean> mark; 
 	
 	public void DFS (Node n) {
-		if(n==null && !mark.get(n)) return;
+		if(n==null || mark.get(n)) return;
 		if(n.succ()!=null) {
 			mark.put(n, true);
 			for (Node i: n.succ())
@@ -45,8 +45,9 @@ public class LivenessAnalysis {
 		
 		// DFS to define the order of operations
 		nodes = new ArrayList<Node>();
+		mark = new Hashtable<Node, Boolean>();
 		for(Node i: g.nodes())
-			mark.set(i, false);
+			mark.put(i, false);
 		DFS(g.nodes().head);
 		Collections.reverse(nodes);
 		
