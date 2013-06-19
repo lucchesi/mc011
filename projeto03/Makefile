@@ -1,23 +1,32 @@
-all: clean compile
+INPUT?=test/Test.txt
+ASM?=Test.asm
+OUTPUT?=Test.out
+
+all:  base test
 	@echo ""
 
+base: clean compile 
+
+test: run compile_assembly execute
+
 clean:
-	rm src/x86/*.class || true
+	rm -f src/optimization/*.class src/main/*.class test/*.asm test/*.res test/*.o *.asm *.out saida.o
 
 compile:
-	javac -classpath lib/etapa2.jar src/x86/Codegen.java 
+#  Retire o comentario da linha abaixo se vc for usar o seu próprio Codegen
+	javac -classpath src:lib/etapa3.jar src/x86/*.java
+
+	javac -classpath src:lib/etapa3.jar src/optimization/LivenessAnalysis.java
+	javac -classpath src:lib/etapa3.jar src/optimization/DeadCodeElimination.java
+	javac -classpath src:lib/etapa3.jar src/main/Main.java
 
 run:
-	java -classpath src:lib/etapa2.jar main/Main $(INPUT) $(OUTPUT)
-
-compare:
-	java -classpath src:lib/etapa2.jar x86.Codegen $(INPUT) dce_off --no-dce
-	java -classpath src:lib/etapa2.jar x86.Codegen $(INPUT) dce_on
-	gvimdiff dce_off dce_on
+	java -classpath src:lib/etapa3.jar main/Main $(INPUT) $(ASM) -O
 
 compile_assembly:
-	nasm -felf32 $(INPUT) -o saida.o
-	gcc saida.o lib/runtime.o -o $(OUTPUT)
+	nasm -felf32 $(ASM) -o saida.o
+	gcc -m32 saida.o lib/runtime.o -o $(OUTPUT)
 
-run_tests: clean compile
-	./runTests.sh
+execute:
+	@echo "Running $(INPUT) "
+	./$(OUTPUT)
