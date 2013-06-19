@@ -48,7 +48,7 @@ public class LivenessAnalysis {
 		mark = new Hashtable<Node, Boolean>();
 		for(Node i: g.nodes())
 			mark.put(i, false);
-		DFS(g.nodes().head);
+		DFS(g.nodes().get(0));
 		Collections.reverse(nodes);
 		
 		in = new Hashtable<Node, HashSet<Temp>>();
@@ -87,11 +87,11 @@ public class LivenessAnalysis {
 			// for each n
 			for(Node n: nodes) {
 				// in'[n] <- in[n]; out'[n] <- out[n]
-				in_ = (HashSet<Temp>)in.get(n).clone();
-				out_ = (HashSet<Temp>)out.get(n).clone();
+				in_ = new HashSet<Temp>(in.get(n));
+				out_ = new HashSet<Temp>(out.get(n));
 				
 				// in[n] <- use[n] U (out[n] - def[n])
-				HashSet<Temp> tmp = (HashSet<Temp>)out_.clone();
+				HashSet<Temp> tmp = new HashSet<Temp>(out_);
 				for(Temp i: def.get(n))
 					tmp.remove(i);
 				for(Temp i: use.get(n))
